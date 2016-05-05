@@ -75,7 +75,11 @@
                                     <constraint firstAttribute="height" constant="44" id="Ov0-a2-Okj"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Settings" id="o0f-cR-4Ka"/>
+                                    <barButtonItem title="Settings" id="o0f-cR-4Ka">
+                                        <connections>
+                                            <action selector="settings:" destination="4ig-dA-M2x" id="M4V-IV-ZJF"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

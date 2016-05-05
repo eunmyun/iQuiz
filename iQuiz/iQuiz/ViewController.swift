@@ -12,6 +12,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
 
+    @IBAction func settings(sender: AnyObject) {
+        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     var subjects : [String] = ["Mathematics", "Marvel Super Heroes", "Science"]
     var subtitle : [String] = ["Math Questions", "Super Hero Questions", "Science Questions"]
     var images = [UIImage(named: "mathematics"), UIImage(named: "heroes"), UIImage(named: "science")]
