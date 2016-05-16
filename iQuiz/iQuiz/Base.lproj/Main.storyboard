@@ -124,14 +124,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-BB-17A">
-                                <rect key="frame" x="50" y="270" width="235" height="135"/>
-                                <color key="backgroundColor" red="0.82584124130000003" green="0.81151697460000005" blue="0.80528483480000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="answer1"/>
-                                <connections>
-                                    <action selector="answerPress:" destination="kS0-ac-KB1" eventType="touchUpInside" id="PY7-fJ-8D1"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oll-B2-7iN">
                                 <rect key="frame" x="315" y="435" width="235" height="135"/>
                                 <color key="backgroundColor" red="0.82584124130000003" green="0.81151697460000005" blue="0.80528483480000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -177,6 +169,14 @@
                                 <state key="normal" title="&lt;- Back"/>
                                 <connections>
                                     <segue destination="4ig-dA-M2x" kind="show" id="UhD-5q-Vbc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-BB-17A">
+                                <rect key="frame" x="50" y="270" width="235" height="135"/>
+                                <color key="backgroundColor" red="0.82584124130000003" green="0.81151697460000005" blue="0.80528483480000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="answer1"/>
+                                <connections>
+                                    <action selector="answerPress:" destination="kS0-ac-KB1" eventType="touchUpInside" id="PY7-fJ-8D1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -358,6 +358,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BD1-8l-ohj"/>
+        <segue reference="UhD-5q-Vbc"/>
     </inferredMetricsTieBreakers>
 </document>

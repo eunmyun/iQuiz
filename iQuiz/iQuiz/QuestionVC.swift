@@ -33,20 +33,41 @@ class QuestionVC: UIViewController {
         answer2.setTitle(quest["answers"]![1] as? String, forState: UIControlState.Normal)
         answer3.setTitle(quest["answers"]![2] as? String, forState: UIControlState.Normal)
         answer4.setTitle(quest["answers"]![3] as? String, forState: UIControlState.Normal)
+        
+        setColor()
+        
         let index: Int = Int((quest["answer"] as? String)!)! - 1
         correctAns = (quest["answers"]![index] as? String)!
     }
     
+    func setColor() {
+        answer1.backgroundColor = UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0)
+        answer2.backgroundColor = UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0)
+        answer3.backgroundColor = UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0)
+        answer4.backgroundColor = UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0)
+    }
+    
     @IBAction func answerPress(sender: UIButton) {
         answerSelect = sender.currentTitle!
+        if sender.backgroundColor == UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0) {
+            setColor()
+            sender.backgroundColor = UIColor(red: 0.8471, green: 0.9569, blue: 0, alpha: 1.0)
+        }
+        else if sender.backgroundColor == UIColor(red: 0.8471, green: 0.9569, blue: 0, alpha: 1.0) {
+            sender.backgroundColor = UIColor(red: 0, green: 0.898, blue: 0.898, alpha: 1.0)
+        }
     }
     
     @IBAction func submit(sender: AnyObject) {
         let aVC = self.storyboard?.instantiateViewControllerWithIdentifier("AnswerVC") as! AnswerVC
         aVC.questionArray = self.questionArray
         aVC.currQuestion = self.currQuestion
+        
         aVC.correctAns = self.correctAns
         aVC.answerSelect = self.answerSelect
+        
+        aVC.totalQuestion = self.totalQuestion
+        aVC.totalScore = self.totalScore
         self.presentViewController(aVC, animated: true, completion: nil)
     }
     

@@ -16,7 +16,7 @@ class ResultVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let message = "You got \(totalScore) right out of \(totalQuestion) questions!"
+        let message = "You got \(totalScore) right out of \(totalQuestion) question(s)!"
         result.text = message
     }
 }

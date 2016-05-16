@@ -17,7 +17,7 @@ class JSONData {
     func checkLocalStorage() {
         //Check if json exists
         
-        //        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        //let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(NSProcessInfo.processInfo().globallyUniqueString, isDirectory: true)
         let filePath = tempDirURL.URLByAppendingPathComponent("quiz.json").absoluteString
         let fileManager = NSFileManager.defaultManager()
