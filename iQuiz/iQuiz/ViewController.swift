@@ -17,23 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
-    var titles : [String] = []
-    var descs : [String]  = []
-    var images = [UIImage(named: "science"), UIImage(named: "heroes"), UIImage(named: "mathematics")]
-    
-    let json = JSONData()
+    var subjects : [String] = ["Mathematics", "Marvel Super Heroes", "Science"]
+    var subtitle : [String] = ["Math Questions", "Super Hero Questions", "Science Questions"]
+    var images = [UIImage(named: "mathematics"), UIImage(named: "heroes"), UIImage(named: "science")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        self.json.fetchData {
-            self.titles = self.json.titles
-            self.descs = self.json.descs
-            self.tableView.reloadData()
-        }
     }
     
     // MARK: - Table view data source
@@ -45,23 +34,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return titles.count
+        return subjects.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell
         
-        cell.subject.text = titles[indexPath.row]
-        cell.subtitle.text = descs[indexPath.row]
+        cell.subject.text = subjects[indexPath.row]
+        cell.subtitle.text = subtitle[indexPath.row]
         cell.photo.image = images[indexPath.row]
                 return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let qVC = self.storyboard?.instantiateViewControllerWithIdentifier("QuestionVC") as! QuestionVC
-        qVC.questionArray = json.questions[indexPath.row]
-        self.presentViewController(qVC, animated: true, completion: nil)
-    }
+
 
     /*
     // MARK: - Navigation
