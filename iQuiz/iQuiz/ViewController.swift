@@ -15,6 +15,7 @@ struct JSONlink {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
 
     @IBAction func settings(sender: AnyObject) {
         /*let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,6 +66,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.descs = self.json.descs
             self.tableView.reloadData()
         }
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
+    }
+    
+    func refresh(sender:AnyObject) {
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     
