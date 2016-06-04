@@ -32,9 +32,31 @@ class AnswerVC: UIViewController {
         }
         message += "The answer is \(correctAns)"
         answer.text = message
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    func swipeDetected(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .Left) {
+            helperFunc()
+        } else if (sender.direction == .Right) {
+            let listView = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            self.presentViewController(listView, animated: true, completion: nil)
+        }
     }
     
     @IBAction func next(sender: AnyObject) {
+        helperFunc()
+    }
+    
+    func helperFunc() {
         if currQuestion + 1 <= questionArray.count - 1 {
             let qVC = self.storyboard?.instantiateViewControllerWithIdentifier("QuestionVC") as! QuestionVC
             qVC.questionArray = self.questionArray
@@ -49,6 +71,7 @@ class AnswerVC: UIViewController {
             rVC.totalScore = self.totalScore
             self.presentViewController(rVC, animated: true, completion: nil)
         }
+
     }
     
     

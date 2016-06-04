@@ -18,5 +18,20 @@ class ResultVC: UIViewController {
         super.viewDidLoad()
         let message = "You got \(totalScore) right out of \(totalQuestion) question(s)!"
         result.text = message
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
     }
+    
+    func swipeDetected(sender:UISwipeGestureRecognizer) {
+            let listView = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            self.presentViewController(listView, animated: true, completion: nil)
+    }
+    
 }

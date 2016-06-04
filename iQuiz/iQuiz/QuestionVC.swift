@@ -38,6 +38,24 @@ class QuestionVC: UIViewController {
         
         let index: Int = Int((quest["answer"] as? String)!)! - 1
         correctAns = (quest["answers"]![index] as? String)!
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDetected:"))
+        
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    func swipeDetected(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .Left) {
+            helperFunc()
+        } else if (sender.direction == .Right) {
+            let listView = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            self.presentViewController(listView, animated: true, completion: nil)
+        }
     }
     
     func setColor() {
@@ -59,6 +77,10 @@ class QuestionVC: UIViewController {
     }
     
     @IBAction func submit(sender: AnyObject) {
+        helperFunc()
+    }
+    
+    func helperFunc() {
         let aVC = self.storyboard?.instantiateViewControllerWithIdentifier("AnswerVC") as! AnswerVC
         aVC.questionArray = self.questionArray
         aVC.currQuestion = self.currQuestion
@@ -69,6 +91,7 @@ class QuestionVC: UIViewController {
         aVC.totalQuestion = self.totalQuestion
         aVC.totalScore = self.totalScore
         self.presentViewController(aVC, animated: true, completion: nil)
+
     }
     
 }
